@@ -22,7 +22,7 @@ public class StudentController{
         studentService.saveStudent(student);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    @GetMapping(value = {"/getStudent", "/{S_ID}"})
+    @GetMapping(value = "/getStudent" )
     public List<Student> getStudent(@PathVariable(required = false) Long S_ID) {
         return studentService.getStudentDetails(S_ID);
     }
