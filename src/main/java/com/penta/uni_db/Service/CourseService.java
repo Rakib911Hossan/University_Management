@@ -3,15 +3,19 @@ package com.penta.uni_db.Service;
 import com.penta.uni_db.Entity.*;
 import com.penta.uni_db.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Component
 @Service
 public class CourseService {
 
-    @Autowired
-    private CourseRepo courseRepo;
+    private final CourseRepo courseRepo;
+
+    public CourseService(CourseRepo courseRepo) {
+        this.courseRepo = courseRepo;
+    }
 
     public void saveCourse(Course course) {
         courseRepo.save(course);

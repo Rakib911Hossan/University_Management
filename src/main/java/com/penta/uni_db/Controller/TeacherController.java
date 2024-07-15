@@ -5,6 +5,7 @@ import com.penta.uni_db.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,10 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/teacher")
-
+@Component
 public class TeacherController {
-    @Autowired
-    private TeacherService teacherService;
+    private final TeacherService teacherService;
+
+    public TeacherController(TeacherService teacherService) {
+        this.teacherService = teacherService;
+    }
 
     @PostMapping("/save")
     public ResponseEntity<Teacher> createCourse(@RequestBody Teacher teacher) {

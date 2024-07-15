@@ -5,6 +5,7 @@ import com.penta.uni_db.Entity.Course;
 import com.penta.uni_db.Repository.StudentRepo;
 import com.penta.uni_db.Repository.CourseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,12 +13,16 @@ import java.util.Set;
 
 
 @Service
-
+@Component
 public class StudentService {
-    @Autowired
-    private StudentRepo studentRepo;
-    @Autowired
-    private CourseRepo courseRepo;
+
+    private final StudentRepo studentRepo;
+    private final CourseRepo courseRepo;
+
+    public StudentService(StudentRepo studentRepo, CourseRepo courseRepo) {
+        this.studentRepo = studentRepo;
+        this.courseRepo = courseRepo;
+    }
 
     public void saveStudent(Student student) {
         studentRepo.save(student);
