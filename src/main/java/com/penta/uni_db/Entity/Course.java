@@ -12,18 +12,19 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Table(name="Course")
+@Table(name="Course_Details")
 @Entity
 
 public class Course {
     @Id
     @GeneratedValue
-    private Long C_ID;
+    @Column(name = "CourseId")
+    private Long courseId;
     private String name;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="C_ID(fk)", referencedColumnName = "C_ID")
+    @JoinColumn(name="courseId(fk)", referencedColumnName = "courseId")
     private List<Teacher> teacher;
 
     @JsonIgnore

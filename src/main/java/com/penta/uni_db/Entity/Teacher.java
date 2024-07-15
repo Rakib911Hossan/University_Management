@@ -14,15 +14,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Teacher")
+@Table(name="Teacher_Details")
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="T_ID")
-    private Long T_ID;
+    @Column(name="TeacherId")
+    private Long teacherId;
     private String name;
 
     @ManyToOne
-    @JoinColumn(name="C_ID(fk)")
+    @JoinColumn(name="courseId(fk)")
     private Course course;
 }

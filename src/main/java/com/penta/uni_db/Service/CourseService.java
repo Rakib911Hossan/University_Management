@@ -21,7 +21,7 @@ public class CourseService {
         courseRepo.save(course);
     }
 
-    public List<Course> getCourseDetails(Long C_ID) {
+    public List<Course> getCourseDetails(Long courseId) {
 //        if (null != C_ID) {
 //            return courseRepo.findAllByC_Id(C_ID);
 //        } else {
@@ -29,7 +29,7 @@ public class CourseService {
 //        }
     }
 
-    public void deleteProject(Long C_ID) {
-        courseRepo.deleteById(C_ID);
+    public void deleteProject(Long courseId) {
+        courseRepo.deleteById(courseId);
     }
 }

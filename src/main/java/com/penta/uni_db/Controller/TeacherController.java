@@ -21,21 +21,21 @@ public class TeacherController {
         this.teacherService = teacherService;
     }
 
-    @PostMapping("/save")
+    @PostMapping("/saveTeacher")
     public ResponseEntity<Teacher> createCourse(@RequestBody Teacher teacher) {
         teacherService.saveTeacher(teacher);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = {"/getTeacher"})
-    public List<Teacher> getTeacher(@PathVariable(required = false) Long T_ID) {
-        return teacherService.getTeacherDetails(T_ID);
+    public List<Teacher> getTeacher(@PathVariable(required = false) Long teacherId) {
+        return teacherService.getTeacherDetails(teacherId);
     }
 
 
-    @DeleteMapping("/delete/{T_ID}")
-    public ResponseEntity <Teacher>removeTeacher(@PathVariable Long T_ID) {
-        teacherService.deleteTeacher(T_ID);
+    @DeleteMapping("/delete/{teacherId}")
+    public ResponseEntity <Teacher>removeTeacher(@PathVariable Long teacherId) {
+        teacherService.deleteTeacher(teacherId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

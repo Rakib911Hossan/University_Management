@@ -21,28 +21,28 @@ public class StudentController{
         this.studentService = studentService;
     }
 
-    @PostMapping("/save")
+    @PostMapping("/saveStudent")
     public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
         studentService.saveStudent(student);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping(value = "/getStudent" )
-    public List<Student> getStudent(@PathVariable(required = false) Long S_ID) {
-        return studentService.getStudentDetails(S_ID);
+    public List<Student> getStudent(@PathVariable(required = false) Long studentId) {
+        return studentService.getStudentDetails(studentId);
     }
 
-    @DeleteMapping("delete/{S_ID}")
-    public ResponseEntity removeStudent(@PathVariable Long S_ID){
-        studentService.deleteStudent(S_ID);
+    @DeleteMapping("delete/{studentId}")
+    public ResponseEntity<Student> removeStudent(@PathVariable Long studentId){
+        studentService.deleteStudent(studentId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/{S_ID}/course/{C_ID}")
+    @PutMapping("/{studentId}/course/{courseId}")
     public Student assignCourseToStudent(
-            @PathVariable Long S_ID,
-            @PathVariable Long C_ID
+            @PathVariable Long studentId,
+            @PathVariable Long courseId
     ){
-        return studentService.assignCourseToStudent(S_ID, C_ID);
+        return studentService.assignCourseToStudent(studentId, courseId);
     }
 
 

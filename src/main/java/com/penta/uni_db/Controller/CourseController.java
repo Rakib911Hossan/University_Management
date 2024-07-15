@@ -22,20 +22,20 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    @PostMapping("/save")
+    @PostMapping("/saveCourse")
         public ResponseEntity<Course> createCourse(@RequestBody Course course) {
             courseService.saveCourse(course);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
 
         @GetMapping(value = {"/getCourse"})
-        public List<Course> getCourse(@PathVariable(required = false) Long C_ID) {
-            return courseService.getCourseDetails(C_ID);
+        public List<Course> getCourse(@PathVariable(required = false) Long courseId) {
+            return courseService.getCourseDetails(courseId);
         }
 
-        @DeleteMapping("/delete/{C_ID}")
-        public ResponseEntity <Course>removeCourse(@PathVariable Long C_ID) {
-            courseService.deleteProject(C_ID);
+        @DeleteMapping("/delete/{courseId}")
+        public ResponseEntity removeCourse(@PathVariable Long courseId) {
+            courseService.deleteProject(courseId);
             return new ResponseEntity<>(HttpStatus.OK);
         }
     }

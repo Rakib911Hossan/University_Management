@@ -29,7 +29,7 @@ public class StudentService {
     }
 
 
-        public List<Student> getStudentDetails (Long S_ID){
+        public List<Student> getStudentDetails (Long studentId){
 //            if (null != S_ID) {
 //                return studentRepo.findAllByS_ID(S_ID);
 //            } else {
@@ -37,10 +37,10 @@ public class StudentService {
 //            }
         }
 
-        public Student assignCourseToStudent (Long S_ID, Long C_ID){
+        public Student assignCourseToStudent (Long studentId, Long courseId){
             Set<Course> courseSet = null;
-            Student student = studentRepo.findById(S_ID).get();
-            Course course = courseRepo.findById(C_ID).get();
+            Student student = studentRepo.findById(studentId).get();
+            Course course = courseRepo.findById(courseId).get();
             courseSet = student.getAssignedCourse();
             courseSet.add(course);
             student.setAssignedCourse(courseSet);
@@ -49,8 +49,8 @@ public class StudentService {
 
 
 
-        public void deleteStudent(Long S_ID){
-            studentRepo.deleteById(S_ID);
+        public void deleteStudent(Long studentId){
+            studentRepo.deleteById(studentId);
         }
 //
 //        @PostMapping("/add")

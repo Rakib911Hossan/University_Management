@@ -22,7 +22,7 @@ public class TeacherService {
         teacherRepo.save(teacher);
     }
 
-    public List<Teacher> getTeacherDetails(Long T_ID) {
+    public List<Teacher> getTeacherDetails(Long teacherId) {
 //        if (null != C_ID) {
 //            return courseRepo.findAllByC_Id(C_ID);
 //        } else {
@@ -30,8 +30,8 @@ public class TeacherService {
 //        }
     }
 
-    public void deleteTeacher(Long T_ID) {
-        teacherRepo.deleteById(T_ID);
+    public void deleteTeacher(Long teacherId) {
+        teacherRepo.deleteById(teacherId);
     }
 }
 
