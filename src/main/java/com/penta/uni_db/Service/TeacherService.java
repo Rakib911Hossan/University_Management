@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Component
@@ -22,13 +23,21 @@ public class TeacherService {
         teacherRepo.save(teacher);
     }
 
-    public List<Teacher> getTeacherDetails(Long teacherId) {
+    public List<Teacher> getTeacherDetails() {
 //        if (null != C_ID) {
 //            return courseRepo.findAllByC_Id(C_ID);
 //        } else {
         return teacherRepo.findAll();
 //        }
     }
+    public Optional<Teacher> getTeacherByID(Long teacherId) {
+//        if (null != C_ID) {
+//            return courseRepo.findAllByC_Id(C_ID);
+//        } else {
+        return teacherRepo.findById(teacherId);
+//        }
+    }
+
 
     public void deleteTeacher(Long teacherId) {
         teacherRepo.deleteById(teacherId);

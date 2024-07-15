@@ -1,7 +1,6 @@
 package com.penta.uni_db.Controller;
 import com.penta.uni_db.Entity.Student;
 import com.penta.uni_db.Service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/student")
@@ -27,8 +27,13 @@ public class StudentController{
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping(value = "/getStudent" )
-    public List<Student> getStudent(@PathVariable(required = false) Long studentId) {
-        return studentService.getStudentDetails(studentId);
+    public List<Student> getStudent() {
+        return studentService.getStudentDetails();
+    }
+
+    @GetMapping(value = "/getStudent/{studentId}" )
+    public Optional<Student> getStudent(@PathVariable(required = true) Long studentId) {
+        return studentService.getStudentById(studentId);
     }
 
     @DeleteMapping("delete/{studentId}")

@@ -1,7 +1,5 @@
 package com.penta.uni_db.Entity;
 
-import com.penta.uni_db.Entity.*;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,23 +12,27 @@ import java.util.Set;
 @Setter
 @Table(name="Course_Details")
 @Entity
-
+@Data
 public class Course {
     @Id
     @GeneratedValue
-    @Column(name = "CourseId")
+    @Column(name = "courseId")
     private Long courseId;
     private String name;
+    private double credit;
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="courseId(fk)", referencedColumnName = "courseId")
-    private List<Teacher> teacher;
 
+
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+//    @JoinColumn(name = "courseId(fk)", referencedColumnName = "courseId")
+//    private List<Teacher> teacher;
+//
     @JsonIgnore
     @ManyToMany(mappedBy = "assignedCourse")
-    private Set<Student> studentSet=new HashSet<>();
+    private Set<Student> studentSet = new HashSet<>();
 
 
+    @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
+    private Set<StudentCourseDetails> studentCourseDetails;
 }
-

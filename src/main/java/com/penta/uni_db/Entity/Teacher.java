@@ -1,8 +1,8 @@
 package com.penta.uni_db.Entity;
 
-import com.penta.uni_db.Entity.*;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
 import jakarta.persistence.*;
 
 
@@ -23,6 +23,6 @@ public class Teacher {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name="courseId(fk)")
+    @JoinColumn(name="courseId(fk)",referencedColumnName = "courseId")
     private Course course;
 }

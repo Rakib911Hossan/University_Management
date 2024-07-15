@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -28,8 +29,13 @@ public class TeacherController {
     }
 
     @GetMapping(value = {"/getTeacher"})
-    public List<Teacher> getTeacher(@PathVariable(required = false) Long teacherId) {
-        return teacherService.getTeacherDetails(teacherId);
+    public List<Teacher> getTeacher() {
+        return teacherService.getTeacherDetails();
+    }
+
+    @GetMapping(value = {"/getTeacher/{teacherId}"})
+    public Optional<Teacher> getTeacher(@PathVariable(required = true) Long teacherId) {
+        return teacherService.getTeacherByID(teacherId);
     }
 
 

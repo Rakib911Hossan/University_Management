@@ -4,11 +4,11 @@ import com.penta.uni_db.Entity.Student;
 import com.penta.uni_db.Entity.Course;
 import com.penta.uni_db.Repository.StudentRepo;
 import com.penta.uni_db.Repository.CourseRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 
@@ -29,13 +29,21 @@ public class StudentService {
     }
 
 
-        public List<Student> getStudentDetails (Long studentId){
+        public List<Student> getStudentDetails (){
 //            if (null != S_ID) {
 //                return studentRepo.findAllByS_ID(S_ID);
 //            } else {
                 return studentRepo.findAll();
 //            }
         }
+
+    public Optional<Student> getStudentById (Long studentId){
+//            if (null != S_ID) {
+//                return studentRepo.findAllByS_ID(S_ID);
+//            } else {
+        return studentRepo.findById(studentId);
+//            }
+    }
 
         public Student assignCourseToStudent (Long studentId, Long courseId){
             Set<Course> courseSet = null;
