@@ -32,7 +32,7 @@ public class StudentController{
     }
 
     @GetMapping(value = "/getStudent/{studentId}" )
-    public Optional<Student> getStudent(@PathVariable(required = true) Long studentId) {
+    public Optional<Student> getStudentById(@PathVariable(required = true) Long studentId) {
         return studentService.getStudentById(studentId);
     }
 
@@ -42,14 +42,14 @@ public class StudentController{
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/{studentId}/course/{courseId}")
-    public Student assignCourseToStudent(
-            @PathVariable Long studentId,
-            @PathVariable Long courseId
-    ){
-        return studentService.assignCourseToStudent(studentId, courseId);
-    }
-
+//    @PutMapping("/{studentId}/course/{courseId}")
+//    public Student assignCourseToStudent(
+//            @PathVariable Long studentId,
+//            @PathVariable Long courseId
+//    ){
+//        return studentService.assignCourseToStudent(studentId, courseId);
+//    }
+//
 
 
 

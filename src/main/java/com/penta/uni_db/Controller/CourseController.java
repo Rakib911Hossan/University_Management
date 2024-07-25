@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/course")
@@ -33,8 +34,13 @@ public class CourseController {
             return courseService.getCourseDetails(courseId);
         }
 
+        @GetMapping("getCourse/{courseId}")
+        public Optional<Course> getCourseById(@PathVariable(required = true)Long courseId){
+        return courseService.getCourseById(courseId);
+        }
+
         @DeleteMapping("/delete/{courseId}")
-        public ResponseEntity removeCourse(@PathVariable Long courseId) {
+        public ResponseEntity<Course> removeCourse(@PathVariable Long courseId) {
             courseService.deleteProject(courseId);
             return new ResponseEntity<>(HttpStatus.OK);
         }

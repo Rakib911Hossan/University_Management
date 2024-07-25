@@ -44,17 +44,17 @@ public class StudentService {
         return studentRepo.findById(studentId);
 //            }
     }
-
-        public Student assignCourseToStudent (Long studentId, Long courseId){
-            Set<Course> courseSet = null;
-            Student student = studentRepo.findById(studentId).get();
-            Course course = courseRepo.findById(courseId).get();
-            courseSet = student.getAssignedCourse();
-            courseSet.add(course);
-            student.setAssignedCourse(courseSet);
-            return studentRepo.save(student);
-        }
-
+//
+//        public Student assignCourseToStudent (Long studentId, Long courseId){
+//            Set<Course> courseSet = null;
+//            Student student = studentRepo.findById(studentId).get();
+//            Course course = courseRepo.findById(courseId).get();
+//            courseSet = student.getAssignedCourse();
+//            courseSet.add(course);
+//            student.setAssignedCourse(courseSet);
+//            return studentRepo.save(student);
+//        }
+//
 
 
         public void deleteStudent(Long studentId){

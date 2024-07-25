@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Component
 @Service
 public class CourseService {
@@ -26,6 +28,12 @@ public class CourseService {
 //            return courseRepo.findAllByC_Id(C_ID);
 //        } else {
             return courseRepo.findAll();
+//        }
+    }
+
+    public Optional<Course> getCourseById(Long courseId) {
+
+        return courseRepo.findById(courseId);
 //        }
     }
 

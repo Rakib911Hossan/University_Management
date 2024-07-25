@@ -1,34 +1,35 @@
 package com.penta.uni_db.Entity;
 
-
-
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Teacher_Details")
-public class Teacher {
+@Table(name="TeacherCourseDetails")
+public class TeacherCourse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="TeacherId")
+    @Column(name="teacherId")
     private Long teacherId;
     private String name;
-    private Long mobile;
-    private String email;
-    private String address;
-    private String rank;
-//
-//    @JsonIgnore
-//    @ManyToOne
-//    @JoinColumn(name="courseId(fk)",referencedColumnName = "courseId")
-//    private Course course;
+
+
+
+    @ManyToOne
+    @JoinColumn(name="courseId(fk)",referencedColumnName = "courseId")
+    private Course course;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<StudentCourse> studentCourse;
+
 }

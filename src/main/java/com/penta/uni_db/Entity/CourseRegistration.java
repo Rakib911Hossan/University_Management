@@ -3,22 +3,21 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Table(name="Student_Course_Details")
+@Table(name="CourseRegistrationDetails")
 @Entity
-public class StudentCourseDetails {
+public class CourseRegistration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_ID")
+    @Column(name = "registrationId")
     private Long id;
     @ManyToOne
     @JoinColumn(name = "student_id",referencedColumnName = "studentId")
-    @JoinColumn(name = "student_name",referencedColumnName = "studentName")
-    private Student student;
+    Student student;
 
 
     @ManyToOne
     @JoinColumn(name = "course_id",referencedColumnName = "courseId")
-    private Course course;
+    Course course;
 
 
 

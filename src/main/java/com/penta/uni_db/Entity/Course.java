@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -22,17 +20,17 @@ public class Course {
     private double credit;
 
 
-
+//
 //    @JsonIgnore
 //    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
 //    @JoinColumn(name = "courseId(fk)", referencedColumnName = "courseId")
 //    private List<Teacher> teacher;
 //
+
+    @ManyToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private Set<StudentCourse> studentCourse;
+
     @JsonIgnore
-    @ManyToMany(mappedBy = "assignedCourse")
-    private Set<Student> studentSet = new HashSet<>();
-
-
     @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
-    private Set<StudentCourseDetails> studentCourseDetails;
+    private Set<CourseRegistration> courseRegistration;
 }

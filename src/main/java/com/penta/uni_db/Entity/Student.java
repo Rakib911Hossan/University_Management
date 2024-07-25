@@ -3,7 +3,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
 import java.util.Set;
 
 
@@ -18,16 +17,11 @@ public class Student {
     @Column(name = "studentName")
     private String name;
     private String email;
+    private String address;
+    private Long mobile;
 
-    @ManyToMany
-    @JoinTable(name = "Student_Course",
-    joinColumns = @JoinColumn(name = "studentId")
-    ,
-    inverseJoinColumns =@JoinColumn(name = "courseId")
-    )
-    private Set<Course> assignedCourse=new HashSet<>();
-
+    @JsonIgnore
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    private Set<StudentCourseDetails> studentCourseDetails;
+    private Set<CourseRegistration> courseRegistration;
 }
 
