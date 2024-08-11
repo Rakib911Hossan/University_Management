@@ -26,11 +26,11 @@ public class Course {
 //    @JoinColumn(name = "courseId(fk)", referencedColumnName = "courseId")
 //    private List<Teacher> teacher;
 //
+//    @JsonIgnore
+//    @ManyToMany( cascade = CascadeType.ALL)
+//    private Set<StudentCourse> studentCourse;
 
-    @ManyToMany(mappedBy = "course", cascade = CascadeType.ALL)
-    private Set<StudentCourse> studentCourse;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
-    private Set<CourseRegistration> courseRegistration;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
+//    private Set<CourseRegistration> courseRegistration;
 }

@@ -20,8 +20,11 @@ public class Student {
     private String address;
     private Long mobile;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    private Set<CourseRegistration> courseRegistration;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+//    private Set<CourseRegistration> courseRegistration;
+//@JsonIgnore
+//@ManyToMany( cascade = CascadeType.ALL)
+//private Set<CourseRegistration> courseRegistration;
 }
 

@@ -18,7 +18,7 @@ public class StudentCourse {
     @Column(name = "studentName")
     private String name;
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToMany( cascade = CascadeType.ALL)
     @JoinTable(name = "Student_Course",
             joinColumns ={ @JoinColumn(name = "studentId",referencedColumnName = "studentId")}

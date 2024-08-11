@@ -24,12 +24,12 @@ public class TeacherCourse {
 
 
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="courseId(fk)",referencedColumnName = "courseId")
-    private Course course;
+    private CourseRegistration courseRegistration;
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<StudentCourse> studentCourse;
-
+//    @JsonIgnore
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private Set<StudentCourse> studentCourse;
+//
 }

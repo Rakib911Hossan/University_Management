@@ -2,22 +2,23 @@ package com.penta.uni_db.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Table(name="CourseRegistrationDetails")
 @Entity
 public class CourseRegistration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "registrationId")
-    private Long id;
-    @ManyToOne
-    @JoinColumn(name = "student_id",referencedColumnName = "studentId")
-    Student student;
-
-
-    @ManyToOne
-    @JoinColumn(name = "course_id",referencedColumnName = "courseId")
-    Course course;
+    @Column(name = "courseId")
+    private Long courseId;
+    @ManyToMany( mappedBy = "", cascade = CascadeType.ALL)
+    @JoinTable(name = "RegisteredStudents",
+            joinColumns ={ @JoinColumn(name = "courseId",referencedColumnName = "courseId")}
+            ,
+            inverseJoinColumns =@JoinColumn(name = "studentId",referencedColumnName = "studentId")
+    )
+    private Set<Student> student;
 
 
 
