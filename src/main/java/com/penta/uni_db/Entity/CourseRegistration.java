@@ -2,6 +2,7 @@ package com.penta.uni_db.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -12,13 +13,13 @@ public class CourseRegistration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "courseId")
     private Long courseId;
-    @ManyToMany( mappedBy = "", cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "RegisteredStudents",
             joinColumns ={ @JoinColumn(name = "courseId",referencedColumnName = "courseId")}
             ,
             inverseJoinColumns =@JoinColumn(name = "studentId",referencedColumnName = "studentId")
     )
-    private Set<Student> student;
+    private Set<Student> student=new HashSet<>();
 
 
 

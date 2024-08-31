@@ -30,6 +30,7 @@ public class CourseController {
         }
 
         @GetMapping(value = {"/getCourse"})
+
         public List<Course> getCourse(@PathVariable(required = false) Long courseId) {
             return courseService.getCourseDetails(courseId);
         }
