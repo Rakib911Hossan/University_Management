@@ -5,6 +5,7 @@ import com.penta.uni_db.Entity.CourseRegistration;
 import com.penta.uni_db.Repository.CourseRepo;
 import com.penta.uni_db.Repository.CourseRegistrationRepo;
 import com.penta.uni_db.Repository.StudentRepo;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +34,7 @@ public class CourseRegistrationService {
         return courseRegistrationRepo.findAll();
     }
 
+    @Cacheable(value = "Course_Registration_Details",key = "#registrationId")
     public Optional<CourseRegistration> getCourseRegistrationById(@PathVariable(required = true)Long registrationId){
         return courseRegistrationRepo.findById(registrationId);
     }

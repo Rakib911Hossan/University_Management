@@ -4,6 +4,7 @@ import com.penta.uni_db.Service.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/api/student")
 @Component
 public class StudentController{
 
@@ -27,6 +28,7 @@ public class StudentController{
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping(value = "/getStudent" )
+//    @PreAuthorize("hasRole('ROLA_ADMIN')")
     public List<Student> getStudent() {
         return studentService.getStudentDetails();
     }

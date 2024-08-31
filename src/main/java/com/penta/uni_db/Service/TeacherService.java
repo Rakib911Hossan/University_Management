@@ -3,6 +3,7 @@ package com.penta.uni_db.Service;
 import com.penta.uni_db.Entity.*;
 import com.penta.uni_db.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,7 @@ public class TeacherService {
         return teacherRepo.findAll();
 //        }
     }
+    @Cacheable(value = "Teacher_Details",key = "#taecherId")
     public Optional<Teacher> getTeacherByID(Long teacherId) {
 //        if (null != C_ID) {
 //            return courseRepo.findAllByC_Id(C_ID);

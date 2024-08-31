@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Set;
 
 @Getter
@@ -11,7 +12,7 @@ import java.util.Set;
 @Table(name="Course_Details")
 @Entity
 @Data
-public class Course {
+public class Course implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "courseId")
