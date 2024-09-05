@@ -5,6 +5,7 @@ import com.penta.uni_db.Entity.Course;
 import com.penta.uni_db.Entity.TeacherCourse;
 import com.penta.uni_db.Repository.CourseRepo;
 import com.penta.uni_db.Repository.TeacherCourseRepo;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,7 @@ public class TeacherCourseService {
         return teacherCourseRepo.findAll();
     }
 
+    @Cacheable(value = "Teacher_Course_Details",key = "#teacherId")
     public Optional<TeacherCourse> getTeacherCourseById(Long teacherId){
         return teacherCourseRepo.findById(teacherId);
     }

@@ -2,13 +2,16 @@ package com.penta.uni_db.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+
+import java.io.Serializable;
+
 import java.util.HashSet;
 import java.util.Set;
 
 @Data
 @Table(name="CourseRegistrationDetails")
 @Entity
-public class CourseRegistration {
+public class CourseRegistration implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "courseId")

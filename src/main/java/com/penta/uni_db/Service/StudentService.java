@@ -4,6 +4,8 @@ import com.penta.uni_db.Entity.Student;
 import com.penta.uni_db.Entity.Course;
 import com.penta.uni_db.Repository.StudentRepo;
 import com.penta.uni_db.Repository.CourseRepo;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +25,7 @@ public class StudentService {
         this.studentRepo = studentRepo;
         this.courseRepo = courseRepo;
     }
-
+   @CachePut(value = "Student_Details",key = "#Student_Details.studentId")
     public void saveStudent(Student student) {
         studentRepo.save(student);
     }
@@ -36,7 +38,7 @@ public class StudentService {
                 return studentRepo.findAll();
 //            }
         }
-
+    @Cacheable(value = "Student_Details",key = "#studentId")
     public Optional<Student> getStudentById (Long studentId){
 //            if (null != S_ID) {
 //                return studentRepo.findAllByS_ID(S_ID);
