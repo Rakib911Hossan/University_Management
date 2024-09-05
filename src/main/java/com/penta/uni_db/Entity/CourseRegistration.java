@@ -2,7 +2,9 @@ package com.penta.uni_db.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+
 import java.io.Serializable;
+
 import java.util.HashSet;
 import java.util.Set;
 
